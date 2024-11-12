@@ -36,7 +36,7 @@ public class HelloControllerIT {
     }
 
     @Test
-    public void testLoadShedding_whenUnderLimit_shouldReturnData() throws ExecutionException, InterruptedException {
+    public void testLoadShedding_whenLimitExceeds_shouldReturnBothStatusCodes() throws ExecutionException, InterruptedException {
         // 200 concurrent requests
         List<CompletableFuture<ResponseEntity<String>>> futures = IntStream.range(0, 200)
                 .mapToObj(i -> CompletableFuture.supplyAsync(() -> restTemplate.getForEntity(baseUrl, String.class)))
